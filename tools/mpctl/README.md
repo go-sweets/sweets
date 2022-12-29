@@ -5,7 +5,7 @@ mix-plus-cli init mix-plus go skeleton
 
 # Install
 ```go
-go get github.com/mix-plus/go-mixplus/tools/mpctl
+go install github.com/mix-plus/go-mixplus/tools/mpctl@latest
 ```
 
 # Run

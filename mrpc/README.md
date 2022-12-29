@@ -1,11 +1,9 @@
 # mRPC
 
-[English](https://github.com/go-ll/mrpc/blob/master/README-en.md)
-
-> gRPC 的封装集合 大量参考 zRPC
+> A collection of wrappers for gRPC Lots of references to zRPC
 
 
-# 运行
+# Run
 
 ```go
 type depositServer struct{}
@@ -60,8 +58,7 @@ func TestMrpc(t *testing.T) {
 }
 ```
 
-
-# 案例
+# Examples
 
 - [mall-go](https://github.com/cexll/mall-go)
 

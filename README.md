@@ -24,7 +24,7 @@ GO111MODULE=on go get -u github.com/mix-plus/go-mixplus/tools/mpctl@latest
 go install github.com/mix-plus/go-mixplus/tools/mpctl@latest
 
 # generate 
-mpctl new api
+mpctl new helloservice
 ```
 the generated files look like
 
@@ -67,17 +67,24 @@ by default, it’s listening on port 8080, while it can be changed in the config
 you can check it by curl:
 
 ```
-curl -i http://localhost:8080/
+curl -i 'http://localhost:8080/v1/dmeo/hello' \
+--header 'Content-Type: application/json' \
+--data '{
+    "id": 1
+}'
 ```
 the response looks like below:
 
 ```
 HTTP/1.1 200 OK
-Content-Type: text/plain; charset=utf-8
-Date: Thu, 29 Dec 2022 05:16:00 GMT
-Content-Length: 13
+Content-Length: 33
+Connection: keep-alive
+Content-Type: application/json
+Date: Mon, 27 Mar 2023 06:08:32 GMT
+Keep-Alive: timeout=4
+Proxy-Connection: keep-alive
 
-Hello MixPlus
+{"id":"1", "message":"Hello 1 !"}
 ```
 
 # Documents

@@ -22,7 +22,7 @@ func init() {
 
 func upgradeRun(_ *cobra.Command, args []string) {
 	upgradeFunc := func(upgradeCmd string) (err error) {
-		cmd := exec.Command("go", upgradeCmd, cliRepoUrl)
+		cmd := exec.Command("go", upgradeCmd, cliRepoUrl+"@v"+CLIVersion)
 		fmt.Printf("Upgrade go-mixplus cli: %s\n", cmd.String())
 		err = cmd.Run()
 		if err != nil {

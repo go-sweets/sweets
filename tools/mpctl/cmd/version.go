@@ -3,8 +3,8 @@ package cmd
 import "strings"
 
 var (
-	SkeletonVersion = "0.1.0"
-	CLIVersion      = "0.1.0"
+	SkeletonVersion = "1.0.0"
+	CLIVersion      = "1.0.0"
 )
 
 var (

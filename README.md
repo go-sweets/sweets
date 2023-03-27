@@ -29,30 +29,46 @@ mpctl new helloservice
 the generated files look like
 
 ```
-api
-├── api
-│   ├── hello.pb.go
-│   └── hello.proto
-├── cmd
-│   └── server.go
-├── etc
-│   └── config.yaml
-├── go.mod
-├── go.sum
-├── internal
-│   ├── config
-│   │   └── config.go
-│   ├── handler
-│   │   ├── controllers
-│   │   │   └── hello.go
-│   │   └── routes.go
-│   ├── logic
-│   │   └── hello.go
-│   └── svc
-│       └── serviceContext.go
+.
 ├── LICENSE
 ├── Makefile
-└── README.md
+├── README.md
+├── api
+│   ├── buf.lock
+│   ├── buf.yaml
+│   ├── hello
+│   │   └── v1
+│   │       ├── hello.pb.go
+│   │       ├── hello.pb.gw.go
+│   │       ├── hello.pb.validate.go
+│   │       ├── hello.proto
+│   │       └── hello_grpc.pb.go
+│   └── openapi.yaml
+├── buf.gen.yaml
+├── buf.work.yaml
+├── cmd
+│   ├── main.go
+│   ├── wire.go
+│   └── wire_gen.go
+├── etc
+│   └── config.yaml
+├── go.mod
+├── go.sum
+└── internal
+    ├── README.md
+    ├── config
+    │   └── config.go
+    ├── server
+    │   ├── grpc.go
+    │   ├── http.go
+    │   └── server.go
+    ├── service
+    │   ├── hello.go
+    │   └── service.go
+    └── svc
+        └── serviceContext.go
+
+11 directories, 27 files
 ```
 
 the generated code can be run directly:
@@ -87,8 +103,6 @@ Proxy-Connection: keep-alive
 {"id":"1", "message":"Hello 1 !"}
 ```
 
-# Documents
-TODO
 
 # LICENSE
 Apache License Version 2.0, http://www.apache.org/licenses/

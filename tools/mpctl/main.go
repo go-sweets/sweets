@@ -1,14 +1,24 @@
 package main
 
 import (
-	"github.com/mix-go/dotenv"
-	"github.com/mix-go/xcli"
-	"github.com/mix-plus/go-mixplus/tools/mpctl/commands"
+	"github.com/mix-plus/go-mixplus/tools/mpctl/cmd"
+	"github.com/spf13/cobra"
+	"log"
 )
 
+var rootCmd = &cobra.Command{
+	Use:     "go-mixplus",
+	Short:   "go-mixplus: An elegant toolkit for Go microservices.",
+	Long:    `go-mixplus: An elegant toolkit for Go microservices.`,
+	Version: cmd.CLIVersion,
+}
+
+func init() {
+	rootCmd.AddCommand(cmd.NewCmd)
+	rootCmd.AddCommand(cmd.UpgradeCmd)
+}
 func main() {
-	xcli.SetName("mpctl").
-		SetVersion(commands.CLIVersion).
-		SetDebug(dotenv.Getenv("APP_DEBUG").Bool(false))
-	xcli.AddCommand(commands.Cmds...).Run()
+	if err := rootCmd.Execute(); err != nil {
+		log.Fatal(err)
+	}
 }

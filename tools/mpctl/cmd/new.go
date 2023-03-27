@@ -1,12 +1,12 @@
-package commands
+package cmd
 
 import (
 	"errors"
 	"fmt"
 	"github.com/cheggaaa/pb/v3"
-	"github.com/manifoldco/promptui"
 	"github.com/mix-go/xcli/flag"
 	"github.com/mix-plus/cli/logic"
+	"github.com/spf13/cobra"
 	"os"
 	"os/exec"
 	"runtime"
@@ -14,61 +14,27 @@ import (
 	"time"
 )
 
+var NewCmd = &cobra.Command{
+	Use:     "new",
+	Short:   "create a service template",
+	Long:    "Create a service project using the repository template. Example: mpctl new helloworld",
+	Run:     newRun,
+	Version: SkeletonVersion,
+}
+
 var (
-	API   = "api"
-	gRPC  = "grpc"
-	Queue = "queue"
+	repoURL string
+	name    string
 )
 
-type NewCommand struct {
-}
+func init() {
+	repoURL = "github.com/mix-plus/mixplus-skeleton"
 
-func (t *NewCommand) Main() {
-	name := flag.Arguments().First().String("hello")
+	name = flag.Arguments().First().String("hello")
 	name = strings.ReplaceAll(name, " ", "")
-
-	promp := func(label string, items []string) string {
-		prompt := promptui.Select{
-			Label: label,
-			Items: items,
-		}
-		prompt.HideSelected = true
-		_, result, err := prompt.Run()
-		if err != nil {
-			return ""
-		}
-		return result
-	}
-
-	var selectType string
-	switch promp("Select project type", []string{"API", "gRPC", "Queue"}) {
-	case "API":
-		selectType = API
-		break
-	case "gRPC":
-		selectType = gRPC
-		break
-	case "Queue":
-		selectType = Queue
-		break
-	default:
-		return
-	}
-
-	t.NewProject(name, selectType)
 }
 
-func (t *NewCommand) NewProject(name, selectType string) {
-	ver := ""
-	switch selectType {
-	case API, gRPC, Queue:
-		ver = fmt.Sprintf("v%s", SkeletonVersion)
-		break
-	default:
-		fmt.Println("Type error, only be console, api, web, grpc")
-		return
-	}
-
+func newRun(_ *cobra.Command, args []string) {
 	envCmd := "go env GOPATH"
 	cmd := exec.Command("go", "env", "GOPATH")
 	out, err := cmd.CombinedOutput()
@@ -91,25 +57,19 @@ func (t *NewCommand) NewProject(name, selectType string) {
 		return
 	}
 
-	srcDir := fmt.Sprintf("%s/pkg/mod/github.com/mix-plus/%s-skeleton@%s", goPath, selectType, ver)
+	srcDir := fmt.Sprintf("%s/pkg/mod/%s", goPath, repoURL+"@v"+SkeletonVersion)
 	if _, err := os.Stat(srcDir); err != nil {
-		fmt.Printf("No skeleton found 'github.com/mix-plus/%s-skeleton@%s'\n", selectType, ver)
+		fmt.Printf("No skeleton found '%s'\n", repoURL)
 
 		installFunc := func(installCmd string) error {
-			cmd := exec.Command("go", installCmd, fmt.Sprintf("github.com/mix-plus/%s-skeleton@%s", selectType, ver))
-			fmt.Printf("Install skeleton 'go %s github.com/mix-plus/%s-skeleton@%s'\n", installCmd, selectType, ver)
+			cmd := exec.Command("go", installCmd, fmt.Sprintf("%s", repoURL))
+			fmt.Printf("Install skeleton 'go %s %s'\n", installCmd, repoURL)
 			total := 0
-			fmt.Println("SelectType ", selectType)
-			switch selectType {
-			case API:
-				total = 13834
-			case gRPC:
-				total = 15659
-			}
 			current := int64(0)
 			bar := pb.StartNew(total)
 			go func() {
-				path := fmt.Sprintf("%s/pkg/mod/cache/download/github.com/mix-plus/%s-skeleton/@v/%s.zip", goPath, selectType, ver)
+				path := fmt.Sprintf("%s/pkg/mod/cache/download/%s/@v/%s.zip", goPath, repoURL, SkeletonVersion)
+				fmt.Println("path ", path)
 				for {
 					f, err := os.Open(path)
 					if err != nil {
@@ -146,10 +106,10 @@ func (t *NewCommand) NewProject(name, selectType string) {
 		}
 
 		time.Sleep(2 * time.Second) // 等待一会，让 gomod 完成解压
-		_ = os.Remove(fmt.Sprintf("%s/bin/%s-skeleton", goPath, selectType))
-		fmt.Println(fmt.Sprintf("Skeleton 'github.com/mix-plus/%s-skeleton@%s' installed successfully", selectType, ver))
+		_ = os.Remove(fmt.Sprintf("%s/bin/mixplus-skeleton", goPath))
+		fmt.Println(fmt.Sprintf("Skeleton '%s' installed successfully", repoURL))
 	} else {
-		fmt.Println(fmt.Sprintf("Local skeleton found 'github.com/mix-plus/%s-skeleton@%s'", selectType, ver))
+		fmt.Println(fmt.Sprintf("Local skeleton found '%s'", repoURL))
 	}
 
 	fmt.Print(" - Generate code")
@@ -159,12 +119,12 @@ func (t *NewCommand) NewProject(name, selectType string) {
 	}
 	dest := fmt.Sprintf("%s/%s", pwd, name)
 	if !logic.CopyPath(srcDir, dest) {
-		panic(errors.New("copy dir failed"))
+		panic(errors.New(fmt.Sprintf("copy dir failed srcdir %s to %s", srcDir, dest)))
 	}
 	fmt.Println(" > ok")
 
 	fmt.Print(" - Processing package name")
-	if err := logic.ReplaceAll(dest, fmt.Sprintf("github.com/mix-plus/%s-skeleton", selectType), name); err != nil {
+	if err := logic.ReplaceAll(dest, fmt.Sprintf("%s", repoURL), name); err != nil {
 		panic(errors.New("replace failed"))
 	}
 	if err := logic.ReplaceMod(dest); err != nil {

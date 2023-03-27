@@ -10,12 +10,8 @@ go install github.com/mix-plus/go-mixplus/tools/mpctl@latest
 
 # Run
 ```
-// init grpc
-mpcli new mrpc
-// init api 
-mpcli new api
-// init queue
-mpcli new queue
+# generate mixplus skeleton
+mpctl new helloservice
 ```
 
 # License

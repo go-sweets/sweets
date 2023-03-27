@@ -1,10 +1,10 @@
-package commands
+package cmd
 
 import "strings"
 
 var (
-	SkeletonVersion = "0.0.1"
-	CLIVersion      = "0.0.1"
+	SkeletonVersion = "0.1.0"
+	CLIVersion      = "0.1.0"
 )
 
 var (

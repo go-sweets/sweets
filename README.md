@@ -83,24 +83,20 @@ by default, it’s listening on port 8080, while it can be changed in the config
 you can check it by curl:
 
 ```
-curl -i 'http://localhost:8080/v1/dmeo/hello' \
---header 'Content-Type: application/json' \
---data '{
-    "id": 1
-}'
+curl -i 'http://localhost:8080/v1/demo/hello?id=1'
 ```
 the response looks like below:
 
 ```
 HTTP/1.1 200 OK
-Content-Length: 33
+Content-Length: 32
 Connection: keep-alive
 Content-Type: application/json
-Date: Mon, 27 Mar 2023 06:08:32 GMT
+Date: Wed, 12 Apr 2023 07:22:12 GMT
 Keep-Alive: timeout=4
 Proxy-Connection: keep-alive
 
-{"id":"1", "message":"Hello 1 !"}
+{"id":"1","message":"Hello 1 !"}%
 ```
 
 

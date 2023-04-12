@@ -28,7 +28,7 @@ var (
 )
 
 func init() {
-	repoURL = "github.com/mix-plus/mixplus-skeleton"
+	repoURL = "github.com/mix-plus/mixplus-layout"
 
 	name = flag.Arguments().First().String("hello")
 	name = strings.ReplaceAll(name, " ", "")
@@ -105,7 +105,7 @@ func newRun(_ *cobra.Command, args []string) {
 		}
 
 		time.Sleep(2 * time.Second) // 等待一会，让 gomod 完成解压
-		_ = os.Remove(fmt.Sprintf("%s/bin/mixplus-skeleton", goPath))
+		_ = os.Remove(fmt.Sprintf("%s/bin/mixplus-layout", goPath))
 		fmt.Println(fmt.Sprintf("Skeleton '%s' installed successfully", repoURL))
 	} else {
 		fmt.Println(fmt.Sprintf("Local skeleton found '%s'", repoURL))

@@ -4,7 +4,7 @@ import "strings"
 
 var (
 	SkeletonVersion = "1.0.2"
-	CLIVersion      = "1.0.3"
+	CLIVersion      = "1.0.4"
 )
 
 var (

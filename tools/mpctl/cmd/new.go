@@ -68,8 +68,7 @@ func newRun(_ *cobra.Command, args []string) {
 			current := int64(0)
 			bar := pb.StartNew(total)
 			go func() {
-				path := fmt.Sprintf("%s/pkg/mod/cache/download/%s/@v/%s.zip", goPath, repoURL, SkeletonVersion)
-				fmt.Println("path ", path)
+				path := fmt.Sprintf("%s/pkg/mod/cache/download/%s/@v%s.zip", goPath, repoURL, SkeletonVersion)
 				for {
 					f, err := os.Open(path)
 					if err != nil {

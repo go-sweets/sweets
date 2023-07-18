@@ -1,0 +1,21 @@
+DbConf:
+  DSN: root:root@tcp(127.0.0.1:3306)/demo?charset=utf8&loc=Asia%2FShanghai&parseTime=true&timeout=10s
+
+RedisConf:
+  Addr: 127.0.0.1
+  Pass:
+  DataBase: 0
+  Timeout: 60
+
+RpcServerConf:
+  Name: hello-rpc
+  Addr: "localhost:8081"
+  Timeout: 60
+  Mode: dev
+
+HttpServerConf:
+  Name: hello-http
+  Addr: "localhost:8000"
+  Timeout: 60
+  Mode: dev
+

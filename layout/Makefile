@@ -26,7 +26,6 @@ api:
 .PHONY: generate
 # generate
 generate:
-	go mod tidy -compat=1.17
 	go get github.com/google/wire/cmd/wire@latest
 	go generate ./...
 

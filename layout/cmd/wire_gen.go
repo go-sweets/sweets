@@ -8,6 +8,7 @@ package main
 
 import (
 	"github.com/mix-plus/mixplus-layout/internal/config"
+	"github.com/mix-plus/mixplus-layout/internal/data_migration"
 	"github.com/mix-plus/mixplus-layout/internal/server"
 	"github.com/mix-plus/mixplus-layout/internal/service"
 	"github.com/mix-plus/mixplus-layout/internal/svc"
@@ -26,4 +27,11 @@ func initApp(c *config.Config) (*server.AppServer, error) {
 		return nil, err
 	}
 	return appServer, nil
+}
+
+func wireMigrate(c *config.Config) *data_migration.Migrator {
+	v := data_migration.CreateDataMigrations()
+	serviceContext := svc.NewServiceContext(c)
+	migrator := data_migration.NewMigrator(v, serviceContext)
+	return migrator
 }

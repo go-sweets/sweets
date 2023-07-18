@@ -18,6 +18,11 @@ func main() {
 		panic(err)
 	}
 
+	// data migration
+	err := wireMigrate(&c).Migrate()
+	if err != nil {
+		// TODO
+	}
 	app, err := initApp(&c)
 	if err != nil {
 		panic(err)

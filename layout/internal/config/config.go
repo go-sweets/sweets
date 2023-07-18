@@ -8,4 +8,5 @@ import (
 type Config struct {
 	mrpc.RpcServerConf `mapstructure:"RpcServerConf"`
 	mpConf.ApiConf     `mapstructure:"HttpServerConf"`
+	mpConf.DbConf      `mapstructure:"DbConf"`
 }

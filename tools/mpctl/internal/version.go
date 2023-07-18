@@ -1,10 +1,10 @@
-package cmd
+package internal
 
 import "strings"
 
 var (
-	SkeletonVersion = "1.0.2"
-	CLIVersion      = "1.0.4"
+	SkeletonVersion = "1.1.0"
+	CLIVersion      = "1.0.5"
 )
 
 var (

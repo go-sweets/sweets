@@ -1,11 +1,11 @@
-package cmd
+package internal
 
 import (
 	"errors"
 	"fmt"
 	"github.com/cheggaaa/pb/v3"
 	"github.com/mix-go/xcli/flag"
-	"github.com/mix-plus/cli/logic"
+	logic2 "github.com/mix-plus/go-mixplus/tools/mpctl/internal/logic"
 	"github.com/spf13/cobra"
 	"os"
 	"os/exec"
@@ -117,16 +117,16 @@ func newRun(_ *cobra.Command, args []string) {
 		panic(err)
 	}
 	dest := fmt.Sprintf("%s/%s", pwd, name)
-	if !logic.CopyPath(srcDir, dest) {
+	if !logic2.CopyPath(srcDir, dest) {
 		panic(errors.New(fmt.Sprintf("copy dir failed srcdir %s to %s", srcDir, dest)))
 	}
 	fmt.Println(" > ok")
 
 	fmt.Print(" - Processing package name")
-	if err := logic.ReplaceAll(dest, fmt.Sprintf("%s", repoURL), name); err != nil {
+	if err := logic2.ReplaceAll(dest, fmt.Sprintf("%s", repoURL), name); err != nil {
 		panic(errors.New("replace failed"))
 	}
-	if err := logic.ReplaceMod(dest); err != nil {
+	if err := logic2.ReplaceMod(dest); err != nil {
 		panic(errors.New("replace go.mod failed"))
 	}
 	fmt.Println(" > ok")

@@ -1,7 +1,7 @@
 package svc
 
 import (
-	"github.com/mix-plus/mixplus-layout/internal/config"
+	"github.com/mix-plus/go-mixplus/layout/internal/config"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 

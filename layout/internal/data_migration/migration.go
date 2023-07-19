@@ -3,8 +3,9 @@ package data_migration
 import (
 	"database/sql"
 	"github.com/google/wire"
-	"github.com/mix-plus/mixplus-layout/internal/data_migration/migrations"
-	"github.com/mix-plus/mixplus-layout/internal/svc"
+	"github.com/mix-plus/go-mixplus/layout/internal/data_migration/migrations"
+	"github.com/mix-plus/go-mixplus/layout/internal/svc"
+	"time"
 )
 
 var ProviderSet = wire.NewSet(CreateDataMigrations, svc.ProviderSet, NewMigrator)
@@ -47,7 +48,7 @@ func (m *Migrator) Migrate() error {
 func (m *Migrator) performMigration(migration Migration) error {
 	// 检查迁移是否已经执行过
 	var name string
-	err := m.svc.DB.Select("SELECT name FROM ? WHERE name = ? LIMIT 1", TableName, migration.Name()).Scan(&name).Error
+	err := m.svc.DB.Select("SELECT id FROM ? WHERE id = ? LIMIT 1", TableName, migration.Name()).Scan(&name).Error
 	if err != nil && err != sql.ErrNoRows {
 		return err
 	}
@@ -69,6 +70,10 @@ func (m *Migrator) performMigration(migration Migration) error {
 	}
 
 	// 记录迁移
-	err = m.svc.DB.Exec("INSERT INTO ? (name) VALUES (?)", TableName, migration.Name()).Error
-	return err
+	err = m.svc.DB.Exec("INSERT INTO ? (id, applied_at) VALUES (?, ?)", TableName, migration.Name(), time.Now()).Error
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

@@ -1,11 +1,11 @@
 package server
 
 import (
-	"github.com/mix-plus/mixplus-layout/internal/config"
-	"github.com/mix-plus/mixplus-layout/internal/service"
-	"github.com/mix-plus/mixplus-layout/internal/svc"
+	"github.com/mix-plus/go-mixplus/layout/internal/config"
+	"github.com/mix-plus/go-mixplus/layout/internal/service"
+	"github.com/mix-plus/go-mixplus/layout/internal/svc"
 
-	hello "github.com/mix-plus/mixplus-layout/api/hello/v1"
+	hello "github.com/mix-plus/go-mixplus/layout/api/hello/v1"
 
 	"github.com/mix-plus/go-mixplus/mrpc"
 	"google.golang.org/grpc"
@@ -18,6 +18,7 @@ func NewGrpcServer(c *config.Config, svc *svc.ServiceContext) *mrpc.RpcServer {
 		// grpc register
 		hello.RegisterHelloServer(g, srv)
 	})
+	s.AddOptions()
 
 	return s
 }

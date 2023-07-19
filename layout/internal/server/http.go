@@ -4,9 +4,9 @@ import (
 	"context"
 	"net/http"
 
-	hello "github.com/mix-plus/mixplus-layout/api/hello/v1"
-	"github.com/mix-plus/mixplus-layout/internal/config"
-	"github.com/mix-plus/mixplus-layout/internal/service"
+	hello "github.com/mix-plus/go-mixplus/layout/api/hello/v1"
+	"github.com/mix-plus/go-mixplus/layout/internal/config"
+	"github.com/mix-plus/go-mixplus/layout/internal/service"
 
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 )

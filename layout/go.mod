@@ -1,4 +1,4 @@
-module github.com/mix-plus/mixplus-layout
+module github.com/mix-plus/go-mixplus/layout
 
 go 1.18
 

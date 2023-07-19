@@ -7,11 +7,11 @@
 package main
 
 import (
-	"github.com/mix-plus/mixplus-layout/internal/config"
-	"github.com/mix-plus/mixplus-layout/internal/data_migration"
-	"github.com/mix-plus/mixplus-layout/internal/server"
-	"github.com/mix-plus/mixplus-layout/internal/service"
-	"github.com/mix-plus/mixplus-layout/internal/svc"
+	"github.com/mix-plus/go-mixplus/layout/internal/config"
+	"github.com/mix-plus/go-mixplus/layout/internal/data_migration"
+	"github.com/mix-plus/go-mixplus/layout/internal/server"
+	"github.com/mix-plus/go-mixplus/layout/internal/service"
+	"github.com/mix-plus/go-mixplus/layout/internal/svc"
 )
 
 // Injectors from wire.go:

@@ -4,9 +4,9 @@ import (
 	"net/http"
 
 	"github.com/google/wire"
+	"github.com/mix-plus/go-mixplus/layout/internal/service"
+	"github.com/mix-plus/go-mixplus/layout/internal/svc"
 	"github.com/mix-plus/go-mixplus/mrpc"
-	"github.com/mix-plus/mixplus-layout/internal/service"
-	"github.com/mix-plus/mixplus-layout/internal/svc"
 )
 
 // ProviderSet is server providers.

@@ -4,7 +4,7 @@ import (
 	"flag"
 
 	"github.com/mix-plus/go-mixplus/core/conf"
-	"github.com/mix-plus/mixplus-layout/internal/config"
+	"github.com/mix-plus/go-mixplus/layout/internal/config"
 )
 
 var configFile = flag.String("f", "etc/config.yaml", "the config file")

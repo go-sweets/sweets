@@ -1,19 +1,6 @@
 # go-mixplus
 A cloud-native Go microservices framework with cli tool for productivity.
 
-# Installation
-Run the following command under your project:
-
-```
-go get -u github.com/mix-plus/go-mixplus
-```
-
-# Upgrade
-
-```
-go install github.com/mix-plus/go-mixplus/tools/mpctl@latest
-```
-
 # Quick Start
 1. install mpctl
 ```
@@ -30,45 +17,65 @@ the generated files look like
 
 ```
 .
+├── Dockerfile
 ├── LICENSE
 ├── Makefile
-├── README.md
 ├── api
-│   ├── buf.lock
-│   ├── buf.yaml
-│   ├── hello
-│   │   └── v1
-│   │       ├── hello.pb.go
-│   │       ├── hello.pb.gw.go
-│   │       ├── hello.pb.validate.go
-│   │       ├── hello.proto
-│   │       └── hello_grpc.pb.go
-│   └── openapi.yaml
+│   ├── buf.lock
+│   ├── buf.yaml
+│   ├── hello
+│   │   └── v1
+│   │       ├── hello.pb.go
+│   │       ├── hello.pb.gw.go
+│   │       ├── hello.pb.validate.go
+│   │       ├── hello.proto
+│   │       └── hello_grpc.pb.go
+│   └── openapi.yaml
 ├── buf.gen.yaml
 ├── buf.work.yaml
 ├── cmd
-│   ├── main.go
-│   ├── wire.go
-│   └── wire_gen.go
+│   ├── main.go
+│   ├── wire.go
+│   └── wire_gen.go
+├── dbconfig.yml
 ├── etc
-│   └── config.yaml
+│   ├── config.yaml
+│   └── gen.yml
 ├── go.mod
 ├── go.sum
 └── internal
     ├── README.md
+    ├── boundedcontexts
+    │   └── hello
+    │       ├── application
+    │       │   └── handlers
+    │       │       └── hello_grpc_handler.go
+    │       ├── domain
+    │       │   ├── entities
+    │       │   │   └── user.go
+    │       │   └── repositories
+    │       │       └── hello_responsitories.go
+    │       ├── infrastructure
+    │       │   └── repositories
+    │       │       └── hello_responsitories.go
+    │       └── wire.go
     ├── config
-    │   └── config.go
+    │   └── config.go
+    ├── db
+    │   ├── migration.go
+    │   └── migrations
+    │       ├── 202307101018-migrate-user-table.go
+    │       ├── 20230718215456-create_data_migrations_table.sql
+    │       └── db.go
     ├── server
-    │   ├── grpc.go
-    │   ├── http.go
-    │   └── server.go
+    │   ├── grpc.go
+    │   ├── http.go
+    │   └── server.go
     ├── service
-    │   ├── hello.go
-    │   └── service.go
+    │   ├── hello.go
+    │   └── service.go
     └── svc
         └── serviceContext.go
-
-11 directories, 27 files
 ```
 
 the generated code can be run directly:
@@ -99,6 +106,11 @@ Proxy-Connection: keep-alive
 {"id":"1","message":"Hello 1 !"}%
 ```
 
+# Upgrade
+
+```
+go install github.com/mix-plus/go-mixplus/tools/mpctl@latest
+```
 
 # LICENSE
 Apache License Version 2.0, http://www.apache.org/licenses/

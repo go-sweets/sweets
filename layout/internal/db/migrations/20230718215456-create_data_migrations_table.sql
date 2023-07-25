@@ -1,4 +1,3 @@
-
 -- +migrate Up
 CREATE TABLE `data_migrations` (
    `id` varchar(255) NOT NULL,

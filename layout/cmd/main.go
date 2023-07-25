@@ -2,9 +2,12 @@ package main
 
 import (
 	"flag"
+	"github.com/mix-plus/go-mixplus/layout/internal/db/migrations"
+	"github.com/mix-plus/go-mixplus/pkg/migrate"
+	"github.com/zeromicro/go-zero/core/logx"
 
-	"github.com/mix-plus/go-mixplus/core/conf"
 	"github.com/mix-plus/go-mixplus/layout/internal/config"
+	"github.com/mix-plus/go-mixplus/pkg/conf"
 )
 
 var configFile = flag.String("f", "etc/config.yaml", "the config file")
@@ -18,10 +21,12 @@ func main() {
 		panic(err)
 	}
 
+	// sql migration
+	migrate.RunMigration(c.DSN, migrations.Fs)
 	// data migration
 	err := wireMigrate(&c).Migrate()
 	if err != nil {
-		// TODO
+		logx.Errorf("Exec Migration error:%v", err)
 	}
 	app, err := initApp(&c)
 	if err != nil {

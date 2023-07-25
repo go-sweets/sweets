@@ -1,12 +1,12 @@
 package config
 
 import (
-	mpConf "github.com/mix-plus/go-mixplus/core/conf"
-	"github.com/mix-plus/go-mixplus/mrpc"
+	mpConf "github.com/mix-plus/go-mixplus/pkg/conf"
+	"github.com/zeromicro/go-zero/zrpc"
 )
 
 type Config struct {
-	mrpc.RpcServerConf `mapstructure:"RpcServerConf"`
+	zrpc.RpcServerConf `mapstructure:"RpcServerConf"`
 	mpConf.ApiConf     `mapstructure:"HttpServerConf"`
 	mpConf.DbConf      `mapstructure:"DbConf"`
 }

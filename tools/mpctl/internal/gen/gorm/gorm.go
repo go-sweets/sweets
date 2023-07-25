@@ -3,9 +3,9 @@ package gorm
 import (
 	"fmt"
 	"github.com/fatih/color"
-	"github.com/mix-plus/go-mixplus/core/contains"
-	"github.com/mix-plus/go-mixplus/core/str"
-	"github.com/mix-plus/go-mixplus/tools/mpctl/internal/plugin/gorm/filter"
+	"github.com/mix-plus/go-mixplus/pkg/contains"
+	"github.com/mix-plus/go-mixplus/pkg/plugins/gorm/filter"
+	"github.com/mix-plus/go-mixplus/pkg/str"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -154,10 +154,10 @@ func genModels(cfg *CmdGenParams) (err error) {
 	// get association tables by associationTables
 	for _, item := range *cfg.Association {
 		arr := strings.Split(item, "|")
-		if !contains.Contains[string](excludeTables, arr[0]) {
+		if !contains.Contains(excludeTables, arr[0]) {
 			excludeTables = append(excludeTables, arr[0])
 		}
-		if !contains.Contains[string](excludeTables, arr[1]) {
+		if !contains.Contains(excludeTables, arr[1]) {
 			excludeTables = append(excludeTables, arr[1])
 		}
 	}
@@ -165,7 +165,7 @@ func genModels(cfg *CmdGenParams) (err error) {
 	// remove excludeTables
 	simpleTables := make([]string, 0, len(targetTables))
 	for _, item := range targetTables {
-		if !contains.Contains[string](excludeTables, item) {
+		if !contains.Contains(excludeTables, item) {
 			simpleTables = append(simpleTables, item)
 		}
 	}
@@ -184,10 +184,10 @@ func genModels(cfg *CmdGenParams) (err error) {
 		tag := field.GormTag{}
 		tag.Set(arr2[0], arr2[1])
 		// save source and relation
-		if !contains.Contains[string](relations, relation) {
+		if !contains.Contains(relations, relation) {
 			relations = append(relations, relation)
 		}
-		if !contains.Contains[string](sources, source) {
+		if !contains.Contains(sources, source) {
 			sources = append(sources, source)
 		}
 
@@ -209,7 +209,7 @@ func genModels(cfg *CmdGenParams) (err error) {
 
 	// relation in sources means generate model with opt, not in is simple
 	for _, item := range relations {
-		if !contains.Contains[string](sources, item) {
+		if !contains.Contains(sources, item) {
 			simpleTables = append(simpleTables, item)
 		}
 	}

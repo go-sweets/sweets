@@ -28,7 +28,7 @@ var (
 )
 
 func init() {
-	repoURL = "github.com/mix-plus/mixplus-layout"
+	repoURL = "github.com/mix-plus/go-mixplus/layout"
 
 	name = flag.Arguments().First().String("hello")
 	name = strings.ReplaceAll(name, " ", "")

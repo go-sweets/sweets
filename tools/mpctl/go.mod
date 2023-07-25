@@ -1,6 +1,6 @@
 module github.com/mix-plus/go-mixplus/tools/mpctl
 
-go 1.20
+go 1.18
 
 require (
 	github.com/cheggaaa/pb/v3 v3.1.0
@@ -10,7 +10,9 @@ require (
 	github.com/lib/pq v1.10.7
 	github.com/mattn/go-sqlite3 v1.14.17
 	github.com/mix-go/xcli v1.1.20
-	github.com/mix-plus/go-mixplus v1.0.2
+	github.com/mix-plus/go-mixplus/pkg/contains v1.1.0
+	github.com/mix-plus/go-mixplus/pkg/plugins/gorm/filter v1.1.0
+	github.com/mix-plus/go-mixplus/pkg/str v1.1.0
 	github.com/olekukonko/tablewriter v0.0.5
 	github.com/pkg/errors v0.9.1
 	github.com/rubenv/sql-migrate v1.5.1
@@ -78,4 +80,8 @@ require (
 	gorm.io/plugin/dbresolver v1.3.0 // indirect
 )
 
-replace github.com/mix-plus/go-mixplus => ../../
+replace (
+	github.com/mix-plus/go-mixplus/pkg/contains => ../../pkg/contains
+	github.com/mix-plus/go-mixplus/pkg/plugins/gorm/filter => ../../pkg/plugins/gorm/filter
+	github.com/mix-plus/go-mixplus/pkg/str => ../../pkg/str
+)

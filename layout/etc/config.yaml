@@ -1,5 +1,5 @@
 DbConf:
-  DSN: root:passwd@tcp(127.0.0.1:33060)/test_db?charset=utf8&loc=Asia%2FShanghai&parseTime=true&timeout=10s
+  DSN: root:root@tcp(127.0.0.1:3306)/test?charset=utf8&loc=Asia%2FShanghai&parseTime=true&timeout=10s
 
 RedisConf:
   Addr: 127.0.0.1:6379

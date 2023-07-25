@@ -30,4 +30,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace github.com/mix-plus/go-mixplus/pkg/conf => ../conf
+//replace github.com/mix-plus/go-mixplus/pkg/conf => ../conf

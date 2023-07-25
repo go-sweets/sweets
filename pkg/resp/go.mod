@@ -35,7 +35,7 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace (
-	github.com/mix-plus/go-mixplus/pkg/convert => ../convert
-	github.com/mix-plus/go-mixplus/pkg/errcode => ../errcode
-)
+//replace (
+//	github.com/mix-plus/go-mixplus/pkg/convert => ../convert
+//	github.com/mix-plus/go-mixplus/pkg/errcode => ../errcode
+//)

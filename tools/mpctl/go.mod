@@ -80,8 +80,8 @@ require (
 	gorm.io/plugin/dbresolver v1.3.0 // indirect
 )
 
-replace (
-	github.com/mix-plus/go-mixplus/pkg/contains => ../../pkg/contains
-	github.com/mix-plus/go-mixplus/pkg/plugins/gorm/filter => ../../pkg/plugins/gorm/filter
-	github.com/mix-plus/go-mixplus/pkg/str => ../../pkg/str
-)
+//replace (
+//	github.com/mix-plus/go-mixplus/pkg/contains => ../../pkg/contains
+//	github.com/mix-plus/go-mixplus/pkg/plugins/gorm/filter => ../../pkg/plugins/gorm/filter
+//	github.com/mix-plus/go-mixplus/pkg/str => ../../pkg/str
+//)

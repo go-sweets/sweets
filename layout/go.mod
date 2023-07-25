@@ -109,8 +109,8 @@ require (
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )
 
-replace (
-	github.com/mix-plus/go-mixplus/pkg/conf => ../pkg/conf
-	github.com/mix-plus/go-mixplus/pkg/migrate => ../pkg/migrate
-	github.com/mix-plus/go-mixplus/pkg/plugins/gorm/filter => ../pkg/plugins/gorm/filter
-)
+//replace (
+//	github.com/mix-plus/go-mixplus/pkg/conf => ../pkg/conf
+//	github.com/mix-plus/go-mixplus/pkg/migrate => ../pkg/migrate
+//	github.com/mix-plus/go-mixplus/pkg/plugins/gorm/filter => ../pkg/plugins/gorm/filter
+//)

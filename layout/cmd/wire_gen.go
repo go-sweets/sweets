@@ -7,8 +7,9 @@
 package main
 
 import (
+	"github.com/mix-plus/go-mixplus/layout/internal/boundedcontexts/hello"
 	"github.com/mix-plus/go-mixplus/layout/internal/config"
-	"github.com/mix-plus/go-mixplus/layout/internal/data_migration"
+	"github.com/mix-plus/go-mixplus/layout/internal/db"
 	"github.com/mix-plus/go-mixplus/layout/internal/server"
 	"github.com/mix-plus/go-mixplus/layout/internal/service"
 	"github.com/mix-plus/go-mixplus/layout/internal/svc"
@@ -19,9 +20,11 @@ import (
 // initApp init app application.
 func initApp(c *config.Config) (*server.AppServer, error) {
 	serviceContext := svc.NewServiceContext(c)
-	helloService := service.NewHelloServer(serviceContext)
+	iHelloRepository := hello.InjectHelloRepository(serviceContext)
+	helloGrpcHandler := hello.InjectHelloGrpcHandler(iHelloRepository)
+	helloService := service.NewHelloServer(serviceContext, helloGrpcHandler)
 	httpServer := server.NewHttpServer(c, helloService)
-	rpcServer := server.NewGrpcServer(c, serviceContext)
+	rpcServer := server.NewGrpcServer(c, serviceContext, helloGrpcHandler)
 	appServer, err := server.NewApp(serviceContext, helloService, httpServer, rpcServer)
 	if err != nil {
 		return nil, err
@@ -29,9 +32,9 @@ func initApp(c *config.Config) (*server.AppServer, error) {
 	return appServer, nil
 }
 
-func wireMigrate(c *config.Config) *data_migration.Migrator {
-	v := data_migration.CreateDataMigrations()
+func wireMigrate(c *config.Config) *db.Migrator {
+	v := db.CreateDataMigrations()
 	serviceContext := svc.NewServiceContext(c)
-	migrator := data_migration.NewMigrator(v, serviceContext)
+	migrator := db.NewMigrator(v, serviceContext)
 	return migrator
 }

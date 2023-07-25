@@ -7,7 +7,7 @@ package main
 
 import (
 	"github.com/mix-plus/go-mixplus/layout/internal/config"
-	"github.com/mix-plus/go-mixplus/layout/internal/data_migration"
+	"github.com/mix-plus/go-mixplus/layout/internal/db"
 	"github.com/mix-plus/go-mixplus/layout/internal/server"
 	"github.com/mix-plus/go-mixplus/layout/internal/service"
 	"github.com/mix-plus/go-mixplus/layout/internal/svc"
@@ -20,6 +20,6 @@ func initApp(c *config.Config) (*server.AppServer, error) {
 	panic(wire.Build(svc.ProviderSet, service.ProviderSet, server.ProviderSet, server.NewApp))
 }
 
-func wireMigrate(c *config.Config) *data_migration.Migrator {
-	panic(wire.Build(data_migration.ProviderSet))
+func wireMigrate(c *config.Config) *db.Migrator {
+	panic(wire.Build(db.ProviderSet))
 }

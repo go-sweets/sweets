@@ -3,8 +3,8 @@ package internal
 import "strings"
 
 var (
-	SkeletonVersion = "1.1.0"
-	CLIVersion      = "1.1.0"
+	SkeletonVersion = "1.2.0"
+	CLIVersion      = "1.2.0"
 )
 
 var (

@@ -1,19 +1,6 @@
 # go-mixplus
 A cloud-native Go microservices framework with cli tool for productivity.
 
-# Installation
-Run the following command under your project:
-
-```
-go get -u github.com/mix-plus/go-mixplus
-```
-
-# Upgrade
-
-```
-go install github.com/mix-plus/go-mixplus/tools/mpctl@latest
-```
-
 # Quick Start
 1. install mpctl
 ```
@@ -99,6 +86,11 @@ Proxy-Connection: keep-alive
 {"id":"1","message":"Hello 1 !"}%
 ```
 
+# Upgrade
+
+```
+go install github.com/mix-plus/go-mixplus/tools/mpctl@latest
+```
 
 # LICENSE
 Apache License Version 2.0, http://www.apache.org/licenses/

@@ -4,8 +4,8 @@ go 1.18
 
 require (
 	github.com/gin-gonic/gin v1.9.1
-	github.com/mix-plus/go-mixplus/pkg/convert v1.1.1-0.20230725101113-b0ff55da51f2
-	github.com/mix-plus/go-mixplus/pkg/errcode v1.1.1-0.20230725101113-b0ff55da51f2
+	github.com/mix-plus/go-mixplus/pkg/convert v1.1.1
+	github.com/mix-plus/go-mixplus/pkg/errcode v1.1.1
 )
 
 require (

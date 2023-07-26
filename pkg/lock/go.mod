@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/go-redsync/redsync/v4 v4.8.1
-	github.com/mix-plus/go-mixplus/pkg/conf v1.1.1-0.20230725101113-b0ff55da51f2
+	github.com/mix-plus/go-mixplus/pkg/conf v1.1.1
 )
 
 require (

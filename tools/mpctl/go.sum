@@ -730,6 +730,12 @@ github.com/mitchellh/mapstructure v1.5.0/go.mod h1:bFUtVrKA4DC2yAKiSyO/QUcy7e+RR
 github.com/mitchellh/osext v0.0.0-20151018003038-5e2d6d41470f/go.mod h1:OkQIRizQZAeMln+1tSwduZz7+Af5oFlKirV/MSYes2A=
 github.com/mix-go/xcli v1.1.20 h1:VL4AGjJokTQdMtB9MZjEYdSq0Ocrw6LSNEcdicxdB60=
 github.com/mix-go/xcli v1.1.20/go.mod h1:33kHro/CBkPMDCfqpm0Uc327GMInI3PFdFBb835kC3Q=
+github.com/mix-plus/go-mixplus/pkg/contains v1.1.1 h1:WUDko0mqE9OWvJqnw6VpXKaZsBDZZrHOqvDBqpnQB/s=
+github.com/mix-plus/go-mixplus/pkg/contains v1.1.1/go.mod h1:n84h6ZT5sckggnnXEca1hm1BbjuwNYto/4+gVYFBAis=
+github.com/mix-plus/go-mixplus/pkg/plugins/gorm/filter v1.1.1 h1:xLFKFH842zTSZMsRrOX/XtlxK+NORPAxD7vRLYmaKes=
+github.com/mix-plus/go-mixplus/pkg/plugins/gorm/filter v1.1.1/go.mod h1:CdoEVNPUiw08eMexdEB7wAcBxhfhsjye5xBCqVBouRQ=
+github.com/mix-plus/go-mixplus/pkg/str v1.1.1 h1:sYLFsQ0f/0pe1srKpXanxSVQ9c20OCxMzCOxPKuJpqI=
+github.com/mix-plus/go-mixplus/pkg/str v1.1.1/go.mod h1:BHhQfgI1nBnR5cjFcvjQ9lvIbDf5O1KUSCsBxtjQCig=
 github.com/mkevac/debugcharts v0.0.0-20191222103121-ae1c48aa8615/go.mod h1:Ad7oeElCZqA1Ufj0U9/liOF4BtVepxRcTvr2ey7zTvM=
 github.com/moby/locker v1.0.1/go.mod h1:S7SDdo5zpBK84bzzVlKr2V0hz+7x9hWbYC/kq7oQppc=
 github.com/moby/spdystream v0.2.0/go.mod h1:f7i0iNDQJ059oMTcWxx8MA/zKFIuD/lY+0GqbN2Wy8c=

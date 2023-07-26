@@ -10,9 +10,9 @@ require (
 	github.com/lib/pq v1.10.7
 	github.com/mattn/go-sqlite3 v1.14.17
 	github.com/mix-go/xcli v1.1.20
-	github.com/mix-plus/go-mixplus/pkg/contains v1.1.0
-	github.com/mix-plus/go-mixplus/pkg/plugins/gorm/filter v1.1.0
-	github.com/mix-plus/go-mixplus/pkg/str v1.1.0
+	github.com/mix-plus/go-mixplus/pkg/contains v1.1.1
+	github.com/mix-plus/go-mixplus/pkg/plugins/gorm/filter v1.1.1
+	github.com/mix-plus/go-mixplus/pkg/str v1.1.1
 	github.com/olekukonko/tablewriter v0.0.5
 	github.com/pkg/errors v0.9.1
 	github.com/rubenv/sql-migrate v1.5.1

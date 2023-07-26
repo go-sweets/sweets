@@ -1,5 +1,0 @@
-development:
-  dialect: mysql
-  datasource: root:passwd@tcp(127.0.0.1:3306)/text?parseTime=true
-  table: schema_migrations
-  dir: internal/db/migrations

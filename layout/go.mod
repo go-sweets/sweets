@@ -7,7 +7,8 @@ require (
 	github.com/google/wire v0.5.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.15.2
 	github.com/mix-plus/go-mixplus/pkg/conf v1.1.1
-	github.com/mix-plus/go-mixplus/pkg/migrate v1.1.1
+	github.com/mix-plus/go-mixplus/pkg/migrate v1.1.2
+	github.com/redis/go-redis/v9 v9.0.5
 	github.com/zeromicro/go-zero v1.5.4
 	google.golang.org/genproto v0.0.0-20230410155749-daa745c078e1
 	google.golang.org/grpc v1.56.2

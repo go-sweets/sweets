@@ -22,11 +22,14 @@ func main() {
 	}
 
 	// sql migration
-	migrate.RunMigration(c.DSN, migrations.Fs)
-	// data migration
-	err := wireMigrate(&c).Migrate()
+	err := migrate.RunMigration(c.DSN, migrations.Fs)
 	if err != nil {
-		logx.Errorf("Exec Migration error:%v", err)
+		logx.Errorf("Exec Sql Migration error:%v", err)
+	}
+	// data migration
+	err = wireMigrate(&c).Migrate()
+	if err != nil {
+		logx.Errorf("Exec Data Migration error:%v", err)
 	}
 	app, err := initApp(&c)
 	if err != nil {

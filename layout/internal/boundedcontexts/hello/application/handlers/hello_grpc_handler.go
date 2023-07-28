@@ -11,17 +11,17 @@ type IHelloGrpcHandler interface {
 }
 
 type HelloGrpcHandler struct {
-	helloRepo repositories.IHelloRepository
+	repo repositories.IHelloRepository
 }
 
 func NewHelloGrpcHandler(helloRepo repositories.IHelloRepository) *HelloGrpcHandler {
 	return &HelloGrpcHandler{
-		helloRepo: helloRepo,
+		repo: helloRepo,
 	}
 }
 
 func (handler *HelloGrpcHandler) SayHello(ctx context.Context, in *hello.HelloReq) (*hello.HelloResp, error) {
-	resp, err := handler.helloRepo.GetUser(in.Id)
+	resp, err := handler.repo.GetUser(in.Id)
 	if err != nil {
 		return nil, err
 	}

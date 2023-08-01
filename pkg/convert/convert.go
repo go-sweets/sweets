@@ -8,41 +8,38 @@ func (s StringTo) String() string {
 	return string(s)
 }
 
-func (s StringTo) Int() (int, error) {
-	v, err := strconv.Atoi(s.String())
-	return v, err
+func (s StringTo) Int() int {
+	v, _ := strconv.ParseInt(s.String(), 10, 64)
+	return int(v)
 }
 
 func (s StringTo) MustInt() int {
-	v, _ := s.Int()
-	return v
+	return s.Int()
 }
 
-func (s StringTo) UInt32() (uint32, error) {
-	v, err := strconv.Atoi(s.String())
-	return uint32(v), err
+func (s StringTo) UInt32() uint32 {
+	v, _ := strconv.ParseInt(s.String(), 10, 64)
+	return uint32(v)
 }
 
 func (s StringTo) MustUInt32() uint32 {
-	v, _ := s.UInt32()
-	return v
+	return s.UInt32()
 }
 
-func (s StringTo) Int64() (int64, error) {
-	v, err := strconv.ParseInt(s.String(), 10, 64)
-	return v, err
+func (s StringTo) Int64() int64 {
+	v, _ := strconv.ParseInt(s.String(), 10, 64)
+	return v
 }
 
 func (s StringTo) MustInt64() int64 {
-	v, _ := s.Int64()
-	return v
+	return s.Int64()
 }
 
-func (s StringTo) Float64() (float64, error) {
-	return strconv.ParseFloat(s.String(), 64)
+func (s StringTo) Float64() float64 {
+	v, _ := strconv.ParseFloat(s.String(), 64)
+	return v
 }
 
 func (s StringTo) MustFloat64() float64 {
-	v, _ := strconv.ParseFloat(s.String(), 64)
-	return v
+	return s.Float64()
 }

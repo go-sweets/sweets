@@ -9,7 +9,7 @@ func (s StringTo) String() string {
 }
 
 func (s StringTo) Int() int {
-	v, _ := strconv.ParseInt(s.String(), 10, 64)
+	v, _ := strconv.ParseInt(s.String(), 10, 16)
 	return int(v)
 }
 
@@ -18,7 +18,7 @@ func (s StringTo) MustInt() int {
 }
 
 func (s StringTo) UInt32() uint32 {
-	v, _ := strconv.ParseInt(s.String(), 10, 64)
+	v, _ := strconv.ParseUint(s.String(), 10, 32)
 	return uint32(v)
 }
 

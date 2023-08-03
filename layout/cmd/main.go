@@ -2,12 +2,12 @@ package main
 
 import (
 	"flag"
-	"github.com/mix-plus/go-mixplus/layout/internal/db/migrations"
-	"github.com/mix-plus/go-mixplus/pkg/migrate"
-	"github.com/zeromicro/go-zero/core/logx"
 
 	"github.com/mix-plus/go-mixplus/layout/internal/config"
+	"github.com/mix-plus/go-mixplus/layout/internal/db/migrations"
 	"github.com/mix-plus/go-mixplus/pkg/conf"
+	"github.com/mix-plus/go-mixplus/pkg/migrate"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 var configFile = flag.String("f", "etc/config.yaml", "the config file")

@@ -2,10 +2,10 @@ package service
 
 import (
 	"context"
-	"github.com/mix-plus/go-mixplus/layout/internal/boundedcontexts/hello/application/handlers"
-	"github.com/mix-plus/go-mixplus/layout/internal/svc"
 
 	hello "github.com/mix-plus/go-mixplus/layout/api/hello/v1"
+	"github.com/mix-plus/go-mixplus/layout/internal/boundedcontexts/hello/application/handlers"
+	"github.com/mix-plus/go-mixplus/layout/internal/svc"
 )
 
 type HelloService struct {

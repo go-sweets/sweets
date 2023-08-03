@@ -2,11 +2,12 @@ package db
 
 import (
 	"database/sql"
+	"time"
+
 	"github.com/google/wire"
 	"github.com/mix-plus/go-mixplus/layout/internal/db/migrations"
 	"github.com/mix-plus/go-mixplus/layout/internal/svc"
 	"github.com/zeromicro/go-zero/core/logx"
-	"time"
 )
 
 var ProviderSet = wire.NewSet(CreateDataMigrations, svc.ProviderSet, NewMigrator)

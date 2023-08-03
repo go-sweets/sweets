@@ -10,13 +10,13 @@ RedisConf:
 RpcServerConf:
   Name: hello-rpc
   Addr: "localhost:8081"
-  Timeout: 60
+  Timeout: 2000
   Mode: dev
 
 HttpServerConf:
   Name: hello-http
   Addr: "localhost:8082"
-  Timeout: 60
+  Timeout: 2000
   Mode: dev
 
 

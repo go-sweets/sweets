@@ -46,3 +46,8 @@ test:
 	go fmt $(go list ./... | grep -v vendor/ | grep -v api/)
 	go vet $(go list ./... | grep -v vendor/ | grep -v api/)
 	go test -race $(go list ./... | grep -v vendor/ | grep -v api/)
+
+.PHONY: release
+release:
+	echo "mixplus run make release"
+	goreleaser release --snapshot --clean

@@ -3,16 +3,24 @@
 before:
   hooks:
     # You may remove this if you don't use go modules.
-    - go mod tidy
+    - go mod download
     # you may remove this if you don't need go generate
     - go generate ./...
 builds:
-  - env:
+  - id: go-mixplus
+    main: ./cmd
+    binary: main
+    env:
       - CGO_ENABLED=0
     goos:
       - linux
       - windows
       - darwin
+    ldflags:
+      - -s -w -X main.build={{.Version}}
+    goarch:
+      - amd64
+      - arm64
 
 archives:
   - format: tar.gz

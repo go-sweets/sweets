@@ -1,116 +1,141 @@
-# go-mixplus
-A cloud-native Go microservices framework with cli tool for productivity.
+# go-sweets
 
-# Quick Start
-1. install mpctl
-```
-# for Go 1.15 and earlier
-GO111MODULE=on go get -u github.com/mix-plus/go-mixplus/tools/mpctl@latest
+English | [简体中文](README.zh-CN.md)
 
-# for Go 1.16 and later
-go install github.com/mix-plus/go-mixplus/tools/mpctl@latest
+> ⚠️ **Repository Reorganized**: This repository has been reorganized. All code has been moved to the main repository.
 
-# generate 
-mpctl new helloservice
-```
-the generated files look like
+**New Repository**: [go-sweets/go-sweets](https://github.com/go-sweets/go-sweets)
 
-```
-.
-├── Dockerfile
-├── LICENSE
-├── Makefile
-├── api
-│   ├── buf.lock
-│   ├── buf.yaml
-│   ├── hello
-│   │   └── v1
-│   │       ├── hello.pb.go
-│   │       ├── hello.pb.gw.go
-│   │       ├── hello.pb.validate.go
-│   │       ├── hello.proto
-│   │       └── hello_grpc.pb.go
-│   └── openapi.yaml
-├── buf.gen.yaml
-├── buf.work.yaml
-├── cmd
-│   ├── main.go
-│   ├── wire.go
-│   └── wire_gen.go
-├── dbconfig.yml
-├── etc
-│   ├── config.yaml
-│   └── gen.yml
-├── go.mod
-├── go.sum
-└── internal
-    ├── README.md
-    ├── boundedcontexts
-    │   └── hello
-    │       ├── application
-    │       │   └── handlers
-    │       │       └── hello_grpc_handler.go
-    │       ├── domain
-    │       │   ├── entities
-    │       │   │   └── user.go
-    │       │   └── repositories
-    │       │       └── hello_responsitories.go
-    │       ├── infrastructure
-    │       │   └── repositories
-    │       │       └── hello_responsitories.go
-    │       └── wire.go
-    ├── config
-    │   └── config.go
-    ├── db
-    │   ├── migration.go
-    │   └── migrations
-    │       ├── 202307101018-migrate-user-table.go
-    │       ├── 20230718215456-create_data_migrations_table.sql
-    │       └── db.go
-    ├── server
-    │   ├── grpc.go
-    │   ├── http.go
-    │   └── server.go
-    ├── service
-    │   ├── hello.go
-    │   └── service.go
-    └── svc
-        └── serviceContext.go
+---
+
+## Overview
+
+go-sweets is a Go framework for building cloud-native microservices with modern tools and best practices. It provides:
+
+- **CLI Tool**: Project scaffolding tool
+- **Service Template**: Production-ready microservice implementation using CloudWeGo framework
+- **Shared Packages**: Reusable utilities for common tasks
+
+## Quick Start
+
+### 1. Install CLI Tool
+
+```bash
+git clone https://github.com/go-sweets/go-sweets.git
+cd go-sweets/cli
+go build -o mpctl main.go
 ```
 
-the generated code can be run directly:
+### 2. Generate a New Service
 
+```bash
+./mpctl new <service-name>
 ```
+
+### 3. Run Your Service
+
+The generated service includes everything you need:
+
+```bash
+cd <service-name>
 go mod tidy
 make run
 ```
 
-by default, it’s listening on port 8080, while it can be changed in the configuration file.
+By default, the service listens on:
 
-you can check it by curl:
+- **HTTP**: `http://localhost:8080` (Hertz)
+- **RPC**: `localhost:9090` (Kitex)
 
-```
-curl -i 'http://localhost:8080/v1/demo/hello?id=1'
-```
-the response looks like below:
+### 4. Test Your Service
 
-```
-HTTP/1.1 200 OK
-Content-Length: 32
-Connection: keep-alive
-Content-Type: application/json
-Date: Wed, 12 Apr 2023 07:22:12 GMT
-Keep-Alive: timeout=4
-Proxy-Connection: keep-alive
-
-{"id":"1","message":"Hello 1 !"}%
+```bash
+curl 'http://localhost:8080/v1/hello?id=1'
 ```
 
-# Upgrade
+Expected response:
 
-```
-go install github.com/mix-plus/go-mixplus/tools/mpctl@latest
+```json
+{"id":"1","message":"Hello 1 !"}
 ```
 
-# LICENSE
-Apache License Version 2.0, http://www.apache.org/licenses/
+## Architecture
+
+### Service Template (sweets-layout)
+
+Complete microservice implementation featuring:
+
+- **CloudWeGo Hertz**: High-performance HTTP framework
+- **CloudWeGo Kitex**: High-performance RPC framework with Protocol Buffers
+- **Wire**: Compile-time dependency injection
+- **GORM**: Database ORM with Goose migrations
+- **Redis**: Caching and session management
+- **DDD Architecture**: Domain-Driven Design with bounded contexts
+
+See [sweets-layout/CLAUDE.md](https://github.com/go-sweets/go-sweets/blob/main/sweets-layout/CLAUDE.md) for detailed documentation.
+
+### Shared Packages (common/)
+
+Independent utility packages:
+
+- `conf/`: Configuration management
+- `di/`: Dependency injection utilities
+- `validator/`: Input validation
+- `hash/`: Hashing utilities
+- `lock/`: Distributed locking
+- `migrate/`: Database migration tools
+- `resp/`: Response formatting
+- `contains/`: Container utilities
+- `convert/`: Type conversion utilities
+- `errcode/`: Error code management
+- `str/`: String utilities
+- `plugins/gorm/filter/`: GORM database filters
+
+## Development
+
+### Building the CLI
+
+```bash
+cd cli
+go build -o mpctl main.go
+```
+
+### Working with Service Template
+
+```bash
+cd sweets-layout
+make init     # Install dependencies and tools
+make proto    # Generate protobuf code
+make wire     # Run Wire dependency injection
+make run      # Run the service
+make test     # Run tests
+make lint     # Run linter
+```
+
+### Using Shared Packages
+
+Import packages in your code:
+
+```go
+import "github.com/go-sweets/go-sweets/common/<package-name>"
+```
+
+Or use local replace directives during development:
+
+```go.mod
+replace github.com/go-sweets/go-sweets/common/conf => ../common/conf
+```
+
+## Documentation
+
+- **Main Repository**: [go-sweets/go-sweets](https://github.com/go-sweets/go-sweets)
+- **Service Architecture**: [sweets-layout/CLAUDE.md](https://github.com/go-sweets/go-sweets/blob/main/sweets-layout/CLAUDE.md)
+- **Project Guide**: [CLAUDE.md](https://github.com/go-sweets/go-sweets/blob/main/CLAUDE.md)
+
+## License
+
+Apache License Version 2.0 - See [LICENSE](LICENSE) for details.
+
+## Contributing
+
+Contributions are welcome! Please visit the [main repository](https://github.com/go-sweets/go-sweets) to contribute.
